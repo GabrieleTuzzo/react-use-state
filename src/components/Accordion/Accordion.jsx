@@ -9,29 +9,48 @@ export default function Accordion() {
         setActiveId(activeId === id ? null : id);
     }
 
+    function getDescription(arr, id) {
+        const element = arr.find((el) => el.id === id);
+        return element && element.description;
+    }
+
     return (
-        <div>
-            <ul>
-                {languages.map((language) => (
-                    <AccordionItem
-                        key={language.id}
-                        id={language.id}
-                        title={language.title}
-                        description={language.description}
-                        active={activeId === language.id ? true : false}
-                        onClick={handleToggle}
-                    />
-                ))}
-            </ul>
-        </div>
+        <>
+            <div className={style.Wrapper}>
+                <ul className={style.List}>
+                    {languages.map((language) => (
+                        <AccordionItem
+                            key={language.id}
+                            id={language.id}
+                            title={language.title}
+                            currentActive={activeId}
+                            onClick={handleToggle}
+                        />
+                    ))}
+                </ul>
+                {activeId && (
+                    <div className={style.Description}>
+                        <p>{getDescription(languages, activeId)}</p>
+                    </div>
+                )}
+            </div>
+        </>
     );
 }
 
-function AccordionItem({ id, title, description, active, onClick }) {
+function AccordionItem({ id, title, currentActive, onClick }) {
     return (
-        <li>
-            <h3 onClick={() => onClick(id)}>{title}</h3>
-            {active && <p>{description}</p>}
-        </li>
+        <>
+            <li>
+                <h3
+                    className={`${style.Button} ${
+                        currentActive === id ? style.Active : ''
+                    }`}
+                    onClick={() => onClick(id)}
+                >
+                    {title}
+                </h3>
+            </li>
+        </>
     );
 }

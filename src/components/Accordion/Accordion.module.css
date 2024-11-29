@@ -1,0 +1,28 @@
+.List {
+    display: flex;
+    gap: 1rem;
+}
+
+.Button {
+    background-color: cornflowerblue;
+    line-height: 1.8rem;
+    border-radius: 1rem;
+    padding: 0 0.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.Wrapper {
+    padding: 2rem;
+}
+
+.Description {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    border-radius: 1rem;
+    border: 1px solid lightgray;
+}
+
+.Active {
+    background-color: orange;
+}

@@ -4,7 +4,9 @@ import Accordion from '../Accordion/Accordion.jsx';
 export default function Main() {
     return (
         <main>
-            <Accordion />
+            <section>
+                <Accordion />
+            </section>
         </main>
     );
 }
